@@ -1,0 +1,8 @@
+# GBackup Config File
+# The level of compression you want your backups to have
+CompressionLevel: 9
+# How old a backup can be before it's deleted
+# Value of 6 = 7 Days (Value - 1 = Days)
+DaysBeforeDeletion: 6
+# The Prefix of the backup
+ServerName: ServerName

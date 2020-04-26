@@ -1,0 +1,27 @@
+name: GBackup
+version: ${project.version}
+main: net.stormmc.JordanPlayz158.GBackup
+api-version: 1.13
+author: JordanPlayz158
+description: This is a Backup Plugin that uses tar and gzip to compress your backups to the smallest size!
+website: https://stormmc.net
+commands:
+  gbackup:
+    description: Backup Command!
+    permission: gbackup.backup
+  gcleanup:
+    description: Cleanup Backups Command!
+    permission: gbackup.cleanup
+
+permissions:
+  gbackup.*:
+    description: Gives access to all GBackup commands!
+    children:
+      gbackup.backup: true
+      gbackup.cleanup: true
+  gbackup.backup:
+    description: Gives access to /gbackup
+    default: op
+  gbackup.cleanup:
+    description: Gives access to /gcleanup
+    default: op
