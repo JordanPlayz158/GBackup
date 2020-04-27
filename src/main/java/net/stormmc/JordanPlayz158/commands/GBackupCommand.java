@@ -1,20 +1,19 @@
 // The Directory in which the class file resides
 package net.stormmc.JordanPlayz158.commands;
 
-// Required for using Command
-
+// Required for using GBackup.plugin
 import net.stormmc.JordanPlayz158.GBackup;
+// Required for using Command
 import org.bukkit.command.Command;
+// Required for implements CommandExecutor
 import org.bukkit.command.CommandExecutor;
+// Required for using CommandSender
 import org.bukkit.command.CommandSender;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-// Required for implements CommandExecutor
-// Required for using CommandSender
 // Required for using BufferedReader
+import java.io.BufferedReader;
 // Required for using InputStreamReader
+import java.io.InputStreamReader;
 
 // Defines the class and what it extends or implements
 public class GBackupCommand implements CommandExecutor {
