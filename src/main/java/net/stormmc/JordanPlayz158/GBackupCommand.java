@@ -17,8 +17,6 @@ import java.io.InputStreamReader;
 public class GBackupCommand implements CommandExecutor {
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        System.out.println(GBackup.plugin.getConfig().getInt("CompressionLevel"));
-        System.out.println(GBackup.plugin.getConfig().getString("ServerName"));
         // Run the Backup method with required variables pulled from the config
         Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
         // You need to return true or false when using a boolean method
@@ -32,6 +30,7 @@ public class GBackupCommand implements CommandExecutor {
         Process p;
         // Try all the statements in the {} below
         try {
+            System.out.println(System.getProperty("user.dir"));
             // Tells the system to run the entered command, while combining arguments from the config
             p = Runtime.getRuntime().exec("tar cvf - -C world/ . | gzip -" + CompressionLevel +" - > backups/" + ServerName + "-$(date +\"\\%Y_\\%m_\\%d_\\%I_\\%M_\\%p\").tar.gz");
             // References BufferedReader as br and initializes a new BufferedReader
@@ -49,8 +48,6 @@ public class GBackupCommand implements CommandExecutor {
             // Destroy the process when it ends/is done
             p.destroy();
         // Catch any errors
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        } catch (Exception e) {}
     }
 }
