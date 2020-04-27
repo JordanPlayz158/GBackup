@@ -15,6 +15,9 @@ public class GReloadCommand implements CommandExecutor {
 
     public static void Reload() {
         // Reloads config.yml
-        GBackup.plugin.reloadConfig();
+        try {
+            GBackup.plugin.reloadConfig();
+            System.out.println("Config.yml has been loaded successfully!");
+        } catch (Exception e) {}
     }
 }
