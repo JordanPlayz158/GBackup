@@ -49,6 +49,8 @@ public class GBackupCommand implements CommandExecutor {
             // Destroy the process when it ends/is done
             p.destroy();
         // Catch any errors
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
