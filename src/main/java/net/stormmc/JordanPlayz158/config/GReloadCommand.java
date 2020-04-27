@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 
 public class GReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        Reload();
         return false;
     }
 
