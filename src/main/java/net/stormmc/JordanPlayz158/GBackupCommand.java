@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 public class GBackupCommand implements CommandExecutor {
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        System.out.println(GBackup.plugin.getConfig().getInt("CompressionLevel"));
+        System.out.println(GBackup.plugin.getConfig().getString("ServerName"));
         // Run the Backup method with required variables pulled from the config
         Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
         // You need to return true or false when using a boolean method
