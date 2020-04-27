@@ -17,7 +17,6 @@ import java.io.InputStreamReader;
 public class GCleanupCommand implements CommandExecutor {
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        System.out.println(GBackup.plugin.getConfig().getInt("DaysBeforeDeletion"));
         // Run the Cleanup method with required variable pulled from the config
         Cleanup(GBackup.plugin.getConfig().getInt("DaysBeforeDeletion"));
         // You need to return true or false when using a boolean method
