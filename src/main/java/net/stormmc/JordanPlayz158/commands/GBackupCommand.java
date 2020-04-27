@@ -32,7 +32,7 @@ public class GBackupCommand implements CommandExecutor {
         // Try all the statements in the {} below
         try {
             // Tells the system to run the entered command, while combining arguments from the config
-            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf /backups/" + ServerName + ".tar.gz /world");
+            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + ".tar.gz world");
             // References BufferedReader as br and initializes a new BufferedReader
             BufferedReader br = new BufferedReader(
                     // Makes a new InputStreamReader to read the output of the executed command
