@@ -2,6 +2,8 @@
 package net.stormmc.JordanPlayz158;
 
 // Required for implements Listener
+import net.stormmc.JordanPlayz158.commands.GBackupCommand;
+import net.stormmc.JordanPlayz158.commands.GCleanupCommand;
 import org.bukkit.event.Listener;
 // Required for extends JavaPlugin
 import org.bukkit.plugin.java.JavaPlugin;

@@ -1,7 +1,8 @@
 // The Directory in which the class file resides
-package net.stormmc.JordanPlayz158;
+package net.stormmc.JordanPlayz158.commands;
 
 // Required for using Command
+import net.stormmc.JordanPlayz158.GBackup;
 import org.bukkit.command.Command;
 // Required for implements CommandExecutor
 import org.bukkit.command.CommandExecutor;
@@ -14,24 +15,25 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 // Defines the class and what it extends or implements
-public class GCleanupCommand implements CommandExecutor {
+public class GBackupCommand implements CommandExecutor {
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        // Run the Cleanup method with required variable pulled from the config
-        Cleanup(GBackup.plugin.getConfig().getInt("DaysBeforeDeletion"));
+        // Run the Backup method with required variables pulled from the config
+        Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
         // You need to return true or false when using a boolean method
         return false;
     }
-    // This method doesn't return anything (void) and requests 1 argument, a int (DaysBeforeDeletion)
-    public static void Cleanup(int DaysBeforeDeletion) {
+    // This method doesn't return anything (void) and requests 2 arguments, a int (CompressionLevel) and a String (ServerName)
+    public static void Backup(int CompressionLevel, String ServerName) {
         // Variable for storing the strings/logs
         String s;
         // Variable for storing the process ID
         Process p;
         // Try all the statements in the {} below
         try {
-            // Tells the system to run the entered command, while combining argument from the config
-            p = Runtime.getRuntime().exec("find backups/* -mtime +" + DaysBeforeDeletion +" -type f -delete");
+            System.out.println(System.getProperty("user.dir"));
+            // Tells the system to run the entered command, while combining arguments from the config
+            p = Runtime.getRuntime().exec("tar cvf - -C /world/ . | gzip -" + CompressionLevel +" - > /backups/" + ServerName + "-$(date +\"\\%Y_\\%m_\\%d_\\%I_\\%M_\\%p\").tar.gz");
             // References BufferedReader as br and initializes a new BufferedReader
             BufferedReader br = new BufferedReader(
                     // Makes a new InputStreamReader to read the output of the executed command
