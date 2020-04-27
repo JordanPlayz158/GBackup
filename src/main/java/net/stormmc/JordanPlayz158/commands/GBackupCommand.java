@@ -1,54 +1,36 @@
-// The Directory in which the class file resides
 package net.stormmc.JordanPlayz158.commands;
 
-// Required for using GBackup.plugin
 import net.stormmc.JordanPlayz158.GBackup;
-// Required for using Command
 import org.bukkit.command.Command;
-// Required for implements CommandExecutor
 import org.bukkit.command.CommandExecutor;
-// Required for using CommandSender
 import org.bukkit.command.CommandSender;
 
-// Required for using BufferedReader
 import java.io.BufferedReader;
-// Required for using InputStreamReader
 import java.io.InputStreamReader;
 
-// Defines the class and what it extends or implements
 public class GBackupCommand implements CommandExecutor {
-    // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        // Run the Backup method with required variables pulled from the config
+        // Run Backup Method with CompressionLevel and ServerName value from config.yml
         Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
-        // You need to return true or false when using a boolean method
+        // Need to return true or false when dealing with booleans
         return false;
     }
-    // This method doesn't return anything (void) and requests 2 arguments, a int (CompressionLevel) and a String (ServerName)
+
     public static void Backup(int CompressionLevel, String ServerName) {
         // Variable for storing the strings/logs
         String s;
         // Variable for storing the process ID
         Process p;
-        // Try all the statements in the {} below
         try {
-            // Tells the system to run the entered command, while combining arguments from the config
+            // Tells the system to run the command
             p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + "-$(date +\"%Y_%m_%d_%I_%M_%p\").tar.gz world");
-            // References BufferedReader as br and initializes a new BufferedReader
             BufferedReader br = new BufferedReader(
-                    // Makes a new InputStreamReader to read the output of the executed command
                     new InputStreamReader(p.getInputStream()));
-            // While lines are still going/being read, send do the command(s) below
             while ((s = br.readLine()) != null)
-                // Send the output/results of the command executed
                 System.out.println("line: " + s);
-            // Wait for the process to complete before exiting
             p.waitFor();
-            // Prints out the exit value
             System.out.println ("exit: " + p.exitValue());
-            // Destroy the process when it ends/is done
             p.destroy();
-        // Catch any errors
         } catch (Exception e) {}
     }
 }

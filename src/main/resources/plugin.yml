@@ -7,11 +7,14 @@ description: This is a Backup Plugin that uses tar and gzip to compress your bac
 website: https://stormmc.net
 commands:
   gbackup:
-    description: Backup Command!
+    description: Backups the server!
     permission: gbackup.backup
   gcleanup:
-    description: Cleanup Backups Command!
+    description: Cleans up old backups!
     permission: gbackup.cleanup
+  greload:
+    description: Reloads config file!
+    permission: gbackup.reload
 
 permissions:
   gbackup.*:
@@ -24,4 +27,7 @@ permissions:
     default: op
   gbackup.cleanup:
     description: Gives access to /gcleanup
+    default: op
+  gbackup.greload:
+    description: Gives access to /greload
     default: op
