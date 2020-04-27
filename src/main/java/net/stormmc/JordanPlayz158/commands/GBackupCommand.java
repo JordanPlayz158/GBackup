@@ -23,7 +23,7 @@ public class GBackupCommand implements CommandExecutor {
         Process p;
         try {
             // Tells the system to run the command
-            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + "-$(date +\"%Y_%m_%d_%I_%M_%p\").tar.gz world");
+            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + "-$( date '+%Y-%m-%d_%H-%M-%S' ).tar.gz world");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             while ((s = br.readLine()) != null)
