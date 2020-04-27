@@ -15,12 +15,10 @@ import java.io.InputStreamReader;
 
 // Defines the class and what it extends or implements
 public class GBackupCommand implements CommandExecutor {
-    // Defines the class to reference/use when using the prefix "plugin."
-    public static GBackup plugin;
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Run the Backup method with required variables pulled from the config
-        Backup(plugin.getConfig().getInt("CompressionLevel"), plugin.getConfig().getString("ServerName"));
+        Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
         // You need to return true or false when using a boolean method
         return false;
     }

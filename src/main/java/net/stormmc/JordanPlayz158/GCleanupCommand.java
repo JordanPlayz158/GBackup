@@ -15,13 +15,11 @@ import java.io.InputStreamReader;
 
 // Defines the class and what it extends or implements
 public class GCleanupCommand implements CommandExecutor {
-    // Defines the class to reference/use when using the prefix "plugin."
-    public static GBackup plugin;
     // When the command is used, do the steps below
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        System.out.println(plugin.getConfig().getInt("DaysBeforeDeletion"));
+        System.out.println(GBackup.plugin.getConfig().getInt("DaysBeforeDeletion"));
         // Run the Cleanup method with required variable pulled from the config
-        Cleanup(plugin.getConfig().getInt("DaysBeforeDeletion"));
+        Cleanup(GBackup.plugin.getConfig().getInt("DaysBeforeDeletion"));
         // You need to return true or false when using a boolean method
         return false;
     }
