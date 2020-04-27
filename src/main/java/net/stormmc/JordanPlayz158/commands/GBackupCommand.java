@@ -2,17 +2,19 @@
 package net.stormmc.JordanPlayz158.commands;
 
 // Required for using Command
+
 import net.stormmc.JordanPlayz158.GBackup;
 import org.bukkit.command.Command;
-// Required for implements CommandExecutor
 import org.bukkit.command.CommandExecutor;
-// Required for using CommandSender
 import org.bukkit.command.CommandSender;
 
-// Required for using BufferedReader
 import java.io.BufferedReader;
-// Required for using InputStreamReader
 import java.io.InputStreamReader;
+
+// Required for implements CommandExecutor
+// Required for using CommandSender
+// Required for using BufferedReader
+// Required for using InputStreamReader
 
 // Defines the class and what it extends or implements
 public class GBackupCommand implements CommandExecutor {

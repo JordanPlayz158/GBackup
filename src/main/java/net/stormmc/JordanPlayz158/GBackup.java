@@ -8,12 +8,16 @@ import org.bukkit.event.Listener;
 // Required for extends JavaPlugin
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 // Defines the class and what it extends or implements
 public class GBackup extends JavaPlugin implements Listener {
     public static GBackup plugin;
     // When the plugin loads/enables
     @Override
     public void onEnable() {
+        // Checks if backups folder exists in root directory
+        new File("backups").mkdirs();
         // Defines what "plugin." goes to
         plugin = this;
         // If config.yml doesn't exist, save config.yml to plugins/PluginName/config.yml
