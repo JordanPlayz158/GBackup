@@ -17,7 +17,7 @@ public class GBackup extends JavaPlugin implements Listener {
         new File("backups").mkdirs();
         // Defines what "plugin." goes to
         plugin = this;
-        // If config.yml doesn't exist, save config.yml to plugins/PluginName/config.yml
+        // If config.yml doesn't exist, save config.yml to plugins/<PluginName>/config.yml
         saveDefaultConfig();
         // Registers the commands and references which classes to go to when each command is executed
         getCommand("gbackup").setExecutor(new GBackupCommand());
