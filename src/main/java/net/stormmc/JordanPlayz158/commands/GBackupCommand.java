@@ -7,23 +7,31 @@ import org.bukkit.command.CommandSender;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GBackupCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Run Backup Method with CompressionLevel and ServerName value from config.yml
-        Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"));
+        Backup(GBackup.plugin.getConfig().getInt("CompressionLevel"), GBackup.plugin.getConfig().getString("ServerName"), GBackup.plugin.getConfig().getString("DateFormat"));
         // Need to return true or false when dealing with booleans
         return false;
     }
 
-    public static void Backup(int CompressionLevel, String ServerName) {
+    public static void Backup(int CompressionLevel, String ServerName, String DateFormat) {
+        // Get date and time
+        String pattern = DateFormat;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+        System.out.println(date);
+
         // Variable for storing the strings/logs
         String s;
         // Variable for storing the process ID
         Process p;
         try {
             // Tells the system to run the command
-            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + "-$(date +%Y%m%d%H%M%S).tar.gz world");
+            p = Runtime.getRuntime().exec("env GZIP=-" + CompressionLevel + " tar cvzf backups/" + ServerName + "-" + date + ".tar.gz world");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             while ((s = br.readLine()) != null)

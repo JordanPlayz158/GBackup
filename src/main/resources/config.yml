@@ -6,3 +6,5 @@ CompressionLevel: 9
 DaysBeforeDeletion: 6
 # The Prefix of the backup
 ServerName: ServerName
+# Date and Time Format
+DateFormat: "yyyy-MM-dd-HH-mm-ss"
