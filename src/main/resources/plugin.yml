@@ -19,15 +19,17 @@ commands:
 permissions:
   gbackup.*:
     description: Gives access to all GBackup commands!
+    default: op
     children:
       gbackup.backup: true
       gbackup.cleanup: true
+      gbackup.reload: true
   gbackup.backup:
     description: Gives access to /gbackup
     default: op
   gbackup.cleanup:
     description: Gives access to /gcleanup
     default: op
-  gbackup.greload:
+  gbackup.reload:
     description: Gives access to /greload
     default: op
