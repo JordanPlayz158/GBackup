@@ -1,14 +1,17 @@
 name: GBackup
 version: ${project.version}
-main: net.stormmc.JordanPlayz158.GBackup
+main: me.JordanPlayz158.GBackup.Main
 api-version: 1.13
 author: JordanPlayz158
-description: This is a Backup Plugin that uses tar and gzip to compress your backups to the smallest size!
-website: https://stormmc.net
+description: This is a Backup Plugin that compresses your backups and gives you the option to upload them to google drive!
+website: https://jordanplayz158.me
 commands:
   gbackup:
     description: Backups the server!
     permission: gbackup.backup
+  gupload:
+    description: Uploads the backup to google drive!
+    permission: gbackup.upload
   gcleanup:
     description: Cleans up old backups!
     permission: gbackup.cleanup
@@ -22,10 +25,14 @@ permissions:
     default: op
     children:
       gbackup.backup: true
+      gbackup.upload: true
       gbackup.cleanup: true
       gbackup.reload: true
   gbackup.backup:
     description: Gives access to /gbackup
+    default: op
+  gbackup.upload:
+    description: Gives access to /gupload
     default: op
   gbackup.cleanup:
     description: Gives access to /gcleanup

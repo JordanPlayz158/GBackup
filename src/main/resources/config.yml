@@ -1,9 +1,31 @@
 # GBackup Config File
-# The level of compression you want your backups to have
-CompressionLevel: 9
+#
+# Decide what folder to put the backups in
+backupFolder: backups
+# Folder to backup (. = everything (excluding BackupFolder defined in the line above))
+folderToBackup: .
+# Files/Folders to exclude (don't use spaces, separate files/folders by ,)
+# Example
+# itemsToExclude: ['logs','cache']
+itemsToExclude:
+  - "logs"
+  - "cache"
 # How old a backup can be before it's deleted
-DaysBeforeDeletion: 7
+# y = years
+# M = months
+# w = weeks
+# d = days
+# h = hours
+# m = minutes
+# s = seconds
+timeBeforeDeletion: 1m
 # The Prefix of the backup
-ServerName: ServerName
+serverName: ServerName
 # Date and Time Format
-DateFormat: "yyyy-MM-dd-HH-mm-ss"
+# yyyy = year
+# MM = month
+# dd = day
+# HH = hour
+# mm = minute
+# ss = seconds
+dateFormat: yyyy-MM-dd-HH-mm-ss
