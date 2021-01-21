@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.Objects;
 
 public class Main extends JavaPlugin implements Listener {
     public static Main plugin;
@@ -15,15 +16,15 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         plugin = this;
-        // Checks if backups folder exists in root directory
-        new File(Utilities.config("BackupFolder")).mkdir();
         // If config.yml doesn't exist, save config.yml to plugins/<PluginName>/config.yml
         saveDefaultConfig();
+        // Checks if backups folder exists in root directory
+        new File(Utilities.config("backupFolder")).mkdir();
         // Registers the commands and references which classes to go to when each command is executed
-        getCommand("gbackup").setExecutor(new GBackup());
-        getCommand("gcleanup").setExecutor(new GCleanup());
-        getCommand("greload").setExecutor(new GReload());
-        getCommand("gupload").setExecutor(new GUpload());
+        Objects.requireNonNull(getCommand("gbackup")).setExecutor(new GBackup());
+        Objects.requireNonNull(getCommand("gcleanup")).setExecutor(new GCleanup());
+        Objects.requireNonNull(getCommand("greload")).setExecutor(new GReload());
+        Objects.requireNonNull(getCommand("gupload")).setExecutor(new GUpload());
     }
 
     @Override

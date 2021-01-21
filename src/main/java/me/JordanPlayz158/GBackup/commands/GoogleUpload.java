@@ -33,14 +33,14 @@ public class GoogleUpload implements Runnable {
 
     private static final String APPLICATION_NAME = "GBackup (General Backup)";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static String TOKENS_DIRECTORY_PATH = Main.plugin.getDataFolder() + "/tokens";
+    private static final File TOKENS_DIRECTORY_PATH = new File(Main.plugin.getDataFolder(), "tokens");
 
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_FILE);
-    private static String CREDENTIALS_FILE_PATH = "./" + Main.plugin.getDataFolder() + "/credentials.json";
+    private static final File CREDENTIALS_FILE_PATH = new File(Main.plugin.getDataFolder(), "credentials.json");
 
     /**
      * Creates an authorized Credential object.
@@ -60,7 +60,7 @@ public class GoogleUpload implements Runnable {
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setDataStoreFactory(new FileDataStoreFactory(TOKENS_DIRECTORY_PATH))
                 .setAccessType("offline")
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
@@ -74,7 +74,7 @@ public class GoogleUpload implements Runnable {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
-        InputStreamContent inputStreamContent = new InputStreamContent("", new BufferedInputStream(new FileInputStream(Utilities.config("BackupFolder") + "/" + name)));
+        InputStreamContent inputStreamContent = new InputStreamContent("", new BufferedInputStream(new FileInputStream(Utilities.config("backupFolder") + "/" + name)));
 
         com.google.api.services.drive.model.File body = new com.google.api.services.drive.model.File();
         body.setName(name);

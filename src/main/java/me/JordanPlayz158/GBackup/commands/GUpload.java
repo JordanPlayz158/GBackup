@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,15 +14,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class GUpload implements CommandExecutor {
-    public static String name = "";
+    public static String name;
 
-
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(@Nonnull CommandSender commandSender, @Nonnull Command command, @Nonnull String s, @Nonnull String[] strings) {
         try {
             List<String> files = new ArrayList<>();
 
-            for(Object file : Files.list(Paths.get(Utilities.config("BackupFolder"))).toArray()) {
-                files.add(String.valueOf(file).substring(Utilities.config("BackupFolder").length() + 1));
+            for(Object file : Files.list(Paths.get(Utilities.config("backupFolder"))).toArray()) {
+                files.add(String.valueOf(file).substring(Utilities.config("backupFolder").length() + 1));
             }
 
             if(files.size() == 0) {

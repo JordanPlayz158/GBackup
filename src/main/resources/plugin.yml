@@ -9,6 +9,7 @@ commands:
   gbackup:
     description: Backups the server!
     permission: gbackup.backup
+    usage: /<command> [name] (if no name provided, will use name in config)
   gupload:
     description: Uploads the backup to google drive!
     permission: gbackup.upload

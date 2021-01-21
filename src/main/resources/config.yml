@@ -1,15 +1,16 @@
 # GBackup Config File
-#
+
 # Decide what folder to put the backups in
 backupFolder: backups
-# Folder to backup (. = everything (excluding BackupFolder defined in the line above))
+
+# Folder to backup (. = everything (excluding backupFolder defined in the line above))
 folderToBackup: .
-# Files/Folders to exclude (don't use spaces, separate files/folders by ,)
-# Example
-# itemsToExclude: ['logs','cache']
+
+# Files/Folders to exclude
 itemsToExclude:
   - "logs"
   - "cache"
+
 # How old a backup can be before it's deleted
 # y = years
 # M = months
@@ -18,9 +19,11 @@ itemsToExclude:
 # h = hours
 # m = minutes
 # s = seconds
-timeBeforeDeletion: 1m
+timeBeforeDeletion: 1M
+
 # The Prefix of the backup
 serverName: ServerName
+
 # Date and Time Format
 # yyyy = year
 # MM = month
@@ -29,3 +32,21 @@ serverName: ServerName
 # mm = minute
 # ss = seconds
 dateFormat: yyyy-MM-dd-HH-mm-ss
+
+# Google Upload
+# In order to upload your backup to google drive, you need to do a few things first.
+# 1. Go to https://developers.google.com/drive/api/v3/quickstart/java#step_1_turn_on_the
+# 2. Click the "Enable the Drive API" button
+# 3. Name the project "GBackup - General Backup" then click Next
+# 4. OAuth client = Desktop app then click Create
+# 5. Click "Download Client Configuration"
+# 6. Save the file as "crendentials.json"
+# 7. Transfer "credentials.json" to "plugins/GBackup/"
+# The full file path should be "plugins/GBackup/credentials.json"
+#
+# 8. Type "/gupload"
+# 9. Click the link in chat and sign in as the user you made the project on
+# 10. Allow Quickstart the permission to
+# "View and manage Google Drive files and folders that you have opened or created with this app"
+#
+# You're ready to upload backups to google drive.
